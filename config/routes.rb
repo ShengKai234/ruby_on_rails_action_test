@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   mount Api::Test => '/api'
 
-  resources :candidates
+  resources :candidates do
+    member do
+      post :vote
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
