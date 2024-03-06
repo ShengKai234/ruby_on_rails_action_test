@@ -41,8 +41,9 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Run db migrate
+      run: |
+        bundle exec rake db:migrate:reset RAILS_ENV=test
     - name: Run tests
       run: |
-        ruby -v
-        bundle exec rake db:migrate:reset RAILS_ENV=test
         bundle exec rake
