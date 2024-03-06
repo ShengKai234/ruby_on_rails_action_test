@@ -1,9 +1,9 @@
-require 'test_helper'
+# require 'test_helper'
 
-class BmiControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
+# class BmiControllerTest < ActionController::TestCase
+#   test "should get index" do
+#     get :index
+#     assert_response :success
+#   end
 
-end
+# end

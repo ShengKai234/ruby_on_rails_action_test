@@ -1,4 +1,4 @@
-class BmiController < ApplicationController
-  def index
-  end
-end
+# class BmiController < ApplicationController
+#   def index
+#   end
+# end
