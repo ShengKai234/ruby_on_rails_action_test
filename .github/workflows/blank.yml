@@ -7,8 +7,7 @@
 
 name: Ruby
 
-on:
-  workflow_dispatch:
+on: [pull_request, workflow_dispatch]
 
 jobs:
   test:
