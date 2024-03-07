@@ -7,8 +7,7 @@
 
 name: Ruby
 
-on:
-  workflow_dispatch:
+on: [pull_request, workflow_dispatch]
 
 jobs:
   test:
@@ -41,8 +40,9 @@ jobs:
       with:
         ruby-version: 2.5.8
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Run db migrate
+      run: |
+        bundle exec rake db:migrate:reset RAILS_ENV=test
     - name: Run tests
       run: |
-        ruby -v
-        bundle exec rake db:migrate:reset RAILS_ENV=test
         bundle exec rake
