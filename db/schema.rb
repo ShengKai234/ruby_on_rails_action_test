@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20240303091622) do
+ActiveRecord::Schema.define(version: 20240310100736) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "is_online"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "photo"
+    t.integer  "candidate_id"
+  end
+
+  add_index "articles", ["candidate_id"], name: "index_articles_on_candidate_id", using: :btree
 
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
@@ -31,6 +46,7 @@ ActiveRecord::Schema.define(version: 20240303091622) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "vote_logs", ["candidate_id"], name: "index_vote_logs_on_candidate_id"
+  add_index "vote_logs", ["candidate_id"], name: "index_vote_logs_on_candidate_id", using: :btree
 
+  add_foreign_key "vote_logs", "candidates"
 end
