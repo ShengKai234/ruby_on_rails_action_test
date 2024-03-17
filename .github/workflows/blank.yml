@@ -20,7 +20,7 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRES_DB: afteedb_test<%= ENV['TEST_ENV_NUMBER'] %>
+          POSTGRES_DB: afteedb_test
           POSTGRES_USER: i04npdb
           POSTGRES_PASSWORD: i04npdb
         # needed because the postgres container does not provide a healthcheck
