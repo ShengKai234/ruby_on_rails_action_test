@@ -32,6 +32,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Set up default schema
+      run: |
+        psql -h localhost -U i04npdb -d afteedb_test -c "CREATE SCHEMA IF NOT EXISTS daisy;"
+        psql -h localhost -U i04npdb -d afteedb_test -c "ALTER ROLE i04npdb SET search_path = daisy, public;"
+        # Add any additional SQL commands you need here
+    
     - name: Set up Ruby
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
     # change this to (see https://github.com/ruby/setup-ruby#versioning):
