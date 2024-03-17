@@ -51,11 +51,17 @@ jobs:
     - name: Run db migrate
       run: |
         bundle exec rake db:migrate:reset RAILS_ENV=test
+
+    - name: check up default schema
+      run: |
+        PGPASSWORD=i04npdb psql -h localhost -U i04npdb -d afteedb_test -c "SELECT schema_name FROM information_schema.schemata;"
+        PGPASSWORD=i04npdb psql -h localhost -U i04npdb -d afteedb_test -c "SELECT * from daisy.candidates;"
+        
     - name: Run tests
       run: |
         bundle exec rake
 
-    - name: Set up default schema
+    - name: check up default schema
       run: |
         PGPASSWORD=i04npdb psql -h localhost -U i04npdb -d afteedb_test -c "SELECT schema_name FROM information_schema.schemata;"
         PGPASSWORD=i04npdb psql -h localhost -U i04npdb -d afteedb_test -c "SELECT * from candidates;"
