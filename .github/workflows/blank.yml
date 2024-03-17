@@ -56,6 +56,7 @@ jobs:
 
     - name: Set up default schema
       run: |
+        PGPASSWORD=i04npdb psql -h localhost -U i04npdb -d afteedb_test -c "SELECT schema_name FROM information_schema.schemata;"
         PGPASSWORD=i04npdb psql -h localhost -U i04npdb -d afteedb_test -c "SELECT * from daisy.candidates;"
         PGPASSWORD=i04npdb psql -h localhost -U i04npdb -d afteedb_test -c "SELECT * from candidates;"
         # Add any additional SQL commands you need here
