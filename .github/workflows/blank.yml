@@ -35,8 +35,8 @@ jobs:
 
     - name: Set up default schema
       run: |
-        psql -h localhost -U i04npdb -d afteedb_test -c "CREATE SCHEMA IF NOT EXISTS daisy;"
-        psql -h localhost -U i04npdb -d afteedb_test -c "ALTER ROLE i04npdb SET search_path = daisy, public;"
+        PGPASSWORD=i04npdb psql -h localhost -U i04npdb -d afteedb_test -c "CREATE SCHEMA IF NOT EXISTS daisy;"
+        PGPASSWORD=i04npdb psql -h localhost -U i04npdb -d afteedb_test -c "ALTER ROLE i04npdb SET search_path = daisy, public;"
         # Add any additional SQL commands you need here
     
     - name: Set up Ruby
