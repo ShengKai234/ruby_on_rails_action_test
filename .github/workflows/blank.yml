@@ -50,7 +50,7 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run db migrate
       run: |
-        bundle exec rake db:migrate:reset RAILS_ENV=test
+        bundle exec rake db:migrate RAILS_ENV=test
 
     - name: check up default schema
       run: |
