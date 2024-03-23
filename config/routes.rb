@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   get "bmi", to: "bmi#index"
 
   get "/hello_world", to: "pages#hello"
